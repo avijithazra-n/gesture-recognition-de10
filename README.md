@@ -121,6 +121,8 @@ gesture-recognition-de10/
 │   ├── asm_chart.png
 │   ├── rtl_view.png
 │   └── waveform_sim.png
+|   └── Presentation.pptx
+|   └── Project_Report_Gesture_recognision.pdf
 └── README.md
 ```
 
