@@ -126,20 +126,6 @@ gesture-recognition-de10/
 
 ---
 
-## How to Simulate
-
-```bash
-# In ModelSim
-vlib work
-vcom src/HPS.vhd src/axis.vhd src/seg_7.vhd src/seg_7_ang.vhd
-vcom tb/gesture_tb.vhd
-vsim work.gesture_tb
-add wave -r /*
-run 2000ns
-```
-
----
-
 ## How to Synthesize (Quartus)
 
 1. Open Quartus Prime → **New Project** → target device: `5CSXFC6D6F31C6` (DE10-Standard)
@@ -170,7 +156,7 @@ VHDL · C · ModelSim · Quartus Prime · DE10-Standard (Cyclone V) · ADXL345 �
 | Name | Contributions |
 |---|---|
 | **Avijit Hazra** | Platform Designer bridge, gesture logic & ASM chart design, Makefile configuration, VHDL implementation, DE10 synthesis, report, presentation |
-| Onwukanjo Innocent O. | Initial top-level & datapath design, Platform Designer bridge, HPS C-code, report, presentation |
+| Onwukanjo Innocent O. | Initial top-level design, Platform Designer bridge, HPS C-code, report, presentation |
 
 ---
 
