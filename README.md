@@ -13,8 +13,7 @@ angles displayed on the board's 7-segment displays.
 
 ## Demo
 
-<!-- TODO: replace YOUR_VIDEO_ID with the YouTube video ID from your simulation/demo video -->
-[![Gesture Recognition Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+[![Gesture Recognition Demo](https://img.youtube.com/vi/Djtrw1_TBx8/maxresdefault.jpg)](https://www.youtube.com/watch?v=Djtrw1_TBx8)
 
 *Click to watch the live demo — board orientation driving real-time HEX display output.*
 
@@ -43,7 +42,7 @@ roll  = atan2(y, z)
 
 ## System Architecture
 
-![Top Level IO Diagram](docs/top_level_io.png)
+![Top Level IO Diagram](docs/IO.jpeg)
 
 The design splits cleanly into two domains:
 
@@ -69,7 +68,7 @@ against a threshold of **200 LSB (≈ 0.78g)**:
 | Y < −200 | Tilted Back | `"BA"` |
 | Default | Idle / Undetermined | `"ID"` |
 
-![ASM Chart](docs/asm_chart.png)
+![ASM Chart](docs/ASM.jpeg)
 
 ---
 
@@ -86,23 +85,7 @@ against a threshold of **200 LSB (≈ 0.78g)**:
 
 ## Datapath
 
-![Datapath](docs/datapath.png)
-
----
-
-## Simulation & Verification
-
-Verified in **ModelSim** using a self-checking testbench. Because the main top-level
-requires live HPS bridge data, a standalone `HPS_Sim` top-level entity was created to
-enable simulation independent of hardware.
-
-**Key verification:** for an input of −45°, `seg_7_ang` correctly identifies the negative
-sign and drives the appropriate BCD values to the HEX units.
-
-![Simulation Waveform](docs/waveform_sim.png)
-
-All simulation traces confirmed correct hardware response to HPS-driven signals within
-the 50 MHz clock domain.
+![Datapath](docs/Data_path.jpeg)
 
 ---
 
