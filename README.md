@@ -1,4 +1,4 @@
-# Gesture Recognition — HPS-Integrated Orientation & Pitch/Roll Detection System
+# Gesture Recognition - HPS-Integrated Orientation & Pitch/Roll Detection System
 
 A real-time orientation and gesture recognition system built on the **DE10-Standard board**,
 integrating an ARM Hard Processor System (HPS) with custom VHDL hardware on the FPGA fabric.
@@ -15,7 +15,7 @@ angles displayed on the board's 7-segment displays.
 
 [![Gesture Recognition Demo](https://img.youtube.com/vi/Djtrw1_TBx8/maxresdefault.jpg)](https://www.youtube.com/watch?v=Djtrw1_TBx8)
 
-*Click to watch the live demo — board orientation driving real-time HEX display output.*
+*Click to watch the live demo - board orientation driving real-time HEX display output.*
 
 ---
 
@@ -24,9 +24,9 @@ angles displayed on the board's 7-segment displays.
 The ADXL345 accelerometer is hardwired to the HPS. As the board tilts, gravitational pull
 shifts across the X, Y, Z axes (range: −2g to +2g, scale factor 3.9 mg/LSB). The system:
 
-1. **HPS (C)** — reads raw X/Y/Z axis data from the ADXL345 over I2C, computes pitch and
+1. **HPS (C)** - reads raw X/Y/Z axis data from the ADXL345 over I2C, computes pitch and
    roll using `atan2()`, and writes integer angles to the FPGA via the HPS-to-FPGA bridge
-2. **FPGA (VHDL)** — samples the incoming data over 8 cycles, averages it, applies
+2. **FPGA (VHDL)** - samples the incoming data over 8 cycles, averages it, applies
    threshold-based gesture logic, and drives the HEX displays with orientation state and
    live angle values
 
@@ -76,7 +76,7 @@ against a threshold of **200 LSB (≈ 0.78g)**:
 
 | File | Description |
 |---|---|
-| `axis.vhd` | Threshold-based gesture state machine — evaluates 16-bit signed X/Y/Z vectors against orientation constants |
+| `axis.vhd` | Threshold-based gesture state machine - evaluates 16-bit signed X/Y/Z vectors against orientation constants |
 | `HPS.vhd` | Sync logic for receiving data from the HPS-to-FPGA bridge |
 | `seg_7_ang.vhd` | BCD conversion for displaying pitch/roll angles on HEX displays with flicker-free slow clock refresh |
 | `seg_7.vhd` | Decoder mapping orientation strings to physical HEX display pins |
@@ -96,7 +96,7 @@ Synthesized in **Quartus Prime** targeting the **Cyclone V** device on the DE10-
 ![RTL View](docs/rtl_view.png)
 
 **Key synthesis decision:** floating-point `atan2` was offloaded entirely to the HPS ARM
-core rather than implemented in VHDL — this avoided the "Can't fit design" error (Error
+core rather than implemented in VHDL - this avoided the "Can't fit design" error (Error
 11802) that occurs when synthesizing floating-point math onto the FPGA fabric, while
 keeping FPGA resource usage minimal and deterministic.
 
